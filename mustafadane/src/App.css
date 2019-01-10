@@ -67,6 +67,7 @@
 
 #intro {
   position: relative;
+  display: flex
 }
 
 #crop {
@@ -84,6 +85,10 @@
   width: 400px;
   height: auto;
 }
+
+/* #pitch {
+
+} */
 
 
 

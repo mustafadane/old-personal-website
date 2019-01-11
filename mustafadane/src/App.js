@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 // import logo from './logo.svg';
 import "./App.css";
+import {Motion, spring} from 'react-motion';
 
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      show: false
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -31,10 +39,14 @@ class App extends Component {
           </div>
         </div>
         <section id="intro">
+
           <div id="crop">
             <img src="/profile.jpg" id="profile" alt="yep, it's me!" />
           </div>
           <div id="pitch">
+            <Motion defaultStyle={{x: -2000, opacity:0}} style={{x: spring(this.state.show ? 10 : -2000), opacity: spring(1)}}>
+              {style => <div style={{transform: `translate(${style.x}px)`, opacity: style.opacity}} >This is a sample animation</div>}
+            </Motion>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text

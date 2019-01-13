@@ -18,33 +18,36 @@ class App extends Component {
         {/* <header className="App-header">
         </header> */}
         <header>
-          <div class="logo">
-            <p>Mustafa Dane</p>
+          <div className="left">
+            <h1>Mustafa Dane</h1>
           </div>
           <nav>
-            <div class="nav-item">
+            <div className="nav-item">
               <a href="#">About</a>
             </div>
-            <div class="nav-item">
+            <div className="nav-item">
               <a href='#'>Projects</a>
             </div>
-            <div class="nav-item">
+            <div className="nav-item">
               <a href='#'>Contact</a>
             </div>
           </nav>
         </header>
-        <div id="navbar-container">
-          <div className="navbar">
-            <p>deneme</p>
-          </div>
-        </div>
         <section id="intro">
-
-          <div id="crop">
-            <img src="/profile.jpg" id="profile" alt="yep, it's me!" />
-          </div>
+          <Motion
+            defaultStyle={{opacity: 0}}
+            style={{opacity: spring(1, {stiffness:50})}}
+          >
+            {
+              style => (
+                <div id="crop" style={{opacity: style.opacity}}>
+                  <img src="/profile.jpg" id="profile" alt="yep, it's me!" />
+                </div>
+              )
+            }
+          </Motion>
           <div id="pitch">
-            <Motion defaultStyle={{x: -2000, opacity:0}} style={{x: spring(this.state.show ? 10 : -2000), opacity: spring(1)}}>
+            <Motion defaultStyle={{x: -2000, opacity:0}} style={{x: spring(this.state.show ? 10 : 10, {stiffness: 20, damping: 26}), opacity: spring(1)}}>
               {style => <div style={{transform: `translate(${style.x}px)`, opacity: style.opacity}} >This is a sample animation</div>}
             </Motion>
             <p>
